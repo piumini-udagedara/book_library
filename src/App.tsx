@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Layout, Spin, Alert, message, Select } from "antd";
+import { Layout, Spin, Alert, message, Select, Button } from "antd";
 import type { Book, BookFormData, ViewMode } from "./types/book";
 import { fetchBooks, createBook, updateBook, deleteBook } from "./services/api";
 import Header from "./components/Header";
@@ -13,6 +13,8 @@ import { Typography } from "./components/Typography";
 import { PrimaryButton } from "./components/buttons/PrimaryButton";
 import { Filter } from "./components/select/Filter";
 import PlusIcon from "./assets/Icons/plus-white.svg?react";
+import { SearchInput } from "./components/input/SearchInput";
+import { AppstoreOutlined, UnorderedListOutlined } from "./assets";
 
 const { Content } = Layout;
 const { Option } = Select;
@@ -23,7 +25,6 @@ const StyledLayout = styled(Layout)`
 `;
 
 const MainContent = styled(Content)`
-  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
   padding: 32px;
@@ -44,17 +45,21 @@ const ContentHeader = styled.div`
   margin-bottom: 32px;
   gap: 16px;
   flex-wrap: wrap;
-
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 16px;
     align-items: stretch;
   }
 `;
 
 const ContentFilter = styled.div`
   display: flex;
-
-  gap: 24px;
+  gap: 16px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
 `;
 
 const BooksContainer = styled.div<{ viewMode: "grid" | "list" }>`
@@ -108,6 +113,20 @@ const EmptyIcon = styled.div`
   opacity: 0.5;
 `;
 
+const HeaderControls = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  @media (min-width: 480px) {
+    display: none;
+  }
+`;
+
+const ViewToggleButton = styled(Button)`
+  height: 40px !important;
+  padding: 10px 24px !important;
+`;
 function App() {
   const [books, setBooks] = useState<Book[]>([]);
   const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
@@ -296,6 +315,25 @@ function App() {
         />
 
         <MainContent>
+          <HeaderControls>
+            <SearchInput
+              width="100%"
+              placeholder="Search by title or author..."
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              allowClear
+            />
+            <ViewToggleButton
+              onClick={handleViewToggle}
+              icon={
+                viewMode === "grid" ? (
+                  <img src={UnorderedListOutlined} />
+                ) : (
+                  <img src={AppstoreOutlined} />
+                )
+              }
+            />
+          </HeaderControls>
           <ContentHeader>
             <Typography type="body-xl-semibold">
               {searchQuery || selectedCategory !== "All"

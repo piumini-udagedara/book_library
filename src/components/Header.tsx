@@ -18,16 +18,16 @@ const StyledHeader = styled(AntHeader)`
   padding: 0 32px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
+  height: 80px !important;
 
   @media (max-width: 768px) {
     padding: 16px;
-    flex-direction: column;
     align-items: stretch;
     gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px;
   }
 `;
 
@@ -37,11 +37,10 @@ const HeaderContent = styled.div`
   align-items: center;
   gap: 32px;
   width: 100%;
-  max-width: 1400px;
+
   margin: 0 auto;
 
   @media (max-width: 768px) {
-    flex-direction: column;
     align-items: stretch;
   }
 `;
@@ -50,12 +49,13 @@ const HeaderControls = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-  flex: 1;
-  max-width: 700px;
 
   @media (max-width: 768px) {
     max-width: 100%;
     flex-wrap: wrap;
+  }
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
@@ -80,7 +80,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <StyledHeader>
       <HeaderContent>
-        <Flex justify="center" align="center">
+        <Flex align="center">
           <img src={Booklibrary} />
           <Typography type="body-xl-semibold" pl="8px">
             Book Library
@@ -88,6 +88,7 @@ const Header: React.FC<HeaderProps> = ({
         </Flex>
         <HeaderControls>
           <SearchInput
+            width="240px"
             placeholder="Search by title or author..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}

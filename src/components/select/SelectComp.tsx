@@ -8,6 +8,7 @@ export const SelectInput = styled(Select)`
   font-size: 14px;
   width: 100%;
   line-height: 20px;
+
   .ant-select-selector {
     border: ${`1px solid ${theme.gray300}`}!important;
     box-sizing: border-box !important;
