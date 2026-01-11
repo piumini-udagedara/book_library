@@ -1,0 +1,28 @@
+{
+  "books": [
+    {
+      "title": "Harry Potter and the Philosopher’s Stone",
+      "author": "J. K. Rowling",
+      "category": "Fiction",
+      "rating": 5,
+      "cover": "https://contentful.harrypotter.com/usf1vwtuqyxm/2DCs73x6P8seNobQ9zBSbO/1a5dfd6ed5fc0ed9545370470fc3d74c/English_Harry_Potter_1_Epub_9781781100219.jpg?q=75&fm=webp&w=914",
+      "id": 1
+    },
+    {
+      "title": "Harry Potter and the Chamber of Secrets",
+      "author": "J. K. Rowling",
+      "category": "Fiction",
+      "rating": 3,
+      "cover": "https://contentful.harrypotter.com/usf1vwtuqyxm/6VuPUG4wPtmg3xvqwm6ZSn/2465365bae53ac09562f7bcea0b75cb3/English_Harry_Potter_2_Epub_9781781100226.jpg?q=75&fm=webp&w=914",
+      "id": 2
+    },
+    {
+      "title": "The Birdwatcher",
+      "author": "Jacquelyn Mitchard",
+      "category": "Mystery",
+      "rating": 4,
+      "cover": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1747285602i/222850706.jpg",
+      "id": 3
+    }
+  ]
+}
