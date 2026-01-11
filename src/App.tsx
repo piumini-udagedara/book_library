@@ -299,12 +299,8 @@ function App() {
           <ContentHeader>
             <Typography type="body-xl-semibold">
               {searchQuery || selectedCategory !== "All"
-                ? `Found ${filteredBooks.length} book${
-                    filteredBooks.length !== 1 ? "s" : ""
-                  }`
-                : `My Library (${books.length} book${
-                    books.length !== 1 ? "s" : ""
-                  })`}
+                ? `Found ${filteredBooks.length} book${filteredBooks.length !== 1 ? "s" : ""}`
+                : `My Library (${books.length} book${books.length !== 1 ? "s" : ""})`}
             </Typography>
             <ContentFilter>
               <Filter

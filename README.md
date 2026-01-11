@@ -16,7 +16,7 @@ An interactive, responsive book library application built with React, TypeScript
 ## Prerequisites
 
 - Node.js (v16 or higher)
-- npm
+- npm or yarn
 
 ## Installation
 
