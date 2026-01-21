@@ -87,10 +87,19 @@ const BookForm: React.FC<BookFormProps> = ({
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
-      onSave(values);
+      const formattedTitle = TestFormating(values.title);
+      onSave({ ...values, title: formattedTitle });
       form.resetFields();
     } catch (error) {
       console.error("Validation failed:", error);
+    }
+  };
+
+  const TestFormating = (title: string) => {
+    if (title) {
+      return title.charAt(0).toUpperCase() + title.slice(1);
+    } else {
+      return title;
     }
   };
 
